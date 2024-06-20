@@ -37,7 +37,7 @@ print(getsizeof(squeres_list)) # 85176
 
 print(type(squeres_list)) # <class 'list'>'''
 
-# class 
+# class
 '''class Car:
     def move(self):
         print("Car is moving")
@@ -90,7 +90,7 @@ my_coment.upvote(5)
 print(my_coment.votes_qty)
 '''
 
-#ukol 
+# ukol
 '''class Image:
     def __init__(self, resolution, title, extension):
         self.resolution = resolution
@@ -236,7 +236,7 @@ print('')
 def sum(a, b):
     return a + b
 print(sum(40.3, 20.7))'''
-#Function name: mult
+# Function name: mult
 # Function arguments are: (5, 2), {}
 # Function result: 10
 # 10
@@ -245,7 +245,7 @@ print(sum(40.3, 20.7))'''
 # Function result: 61.0
 # 61.0
 
-#funkce decorator kontrola  na  spatne typy 
+# funkce decorator kontrola  na  spatne typy
 '''
 def validate_args(fn):
     def wrapper(*args, **kwargs):
@@ -267,7 +267,7 @@ except ValueError as e:
     print(e)
 '''
 # decorator kontrola na autentefikace user
-def is_user_autenicated():
+'''def is_user_autenicated():
     return True
 
 
@@ -288,4 +288,170 @@ def do_sensitive_job():
 try:
     do_sensitive_job()
 except Exception as e:
-    print(e)
+    print(e)'''
+# module and import
+
+# json
+
+
+# import json
+# convert dict v json and json v dict
+'''my_dict = {
+    'a': 1,
+    'b': (2, 3, 5),
+    'c': 'asd',
+    'd': None,
+    'e': True,
+    'f': False
+}
+
+converted_dict = json.dumps(my_dict, indent=1)
+print(converted_dict)
+print(type(converted_dict))
+
+converted_json = json.loads(converted_dict)
+print(converted_json)'''
+
+# prace z file # c:\Users\kolja\Desktop\Python\MykolaPrague\Python_Video
+''' 
+from os import path # funkcionalny spusub vyhledat absolutni cestu
+print(path.abspath('.'))
+
+from pathlib import Path # objktno orientovany spusob
+print(Path('.').absolute())
+
+from pathlib import Path #cwd -current working directory
+print(Path.cwd())
+
+#formirujem cestu 
+from pathlib import Path
+print(Path('C:/') / 'Users' /'kolja' / 'Desktop'/ 'Python'/ 'MykolaPrague'/ 'Python_Video')'''
+
+# kontrola  existujici slozky
+'''from pathlib import Path
+
+
+print(Path('main.py').exists()) # True
+print(Path('main.py').is_file()) # True'''
+
+# seznam slozek
+
+'''for f in Path('.').iterdir():
+    print(f)# main.py main2.py'''
+# precteme existujici file
+'''with open ('test.txt') as test_file:
+    print(test_file.read())'''
+# precteme existujici file a taky ulozi do listu
+'''with open ('test.txt') as test_file:
+    print(test_file.readlines())'''  # ['tsdfgdf\n', 'sfsgs']
+
+# stvorime a zapiseme do filu
+
+'''with open('new.txt', 'w') as new_file: 
+    new_file.write("First string\n") 
+    new_file.write("Second string\n")'''
+# precteme file
+'''with open('new.txt') as new_file: 
+    print(new_file.read())'''
+# smazat file
+'''from pathlib import Path
+my_file = Path('test.txt')
+
+if my_file.exists():
+    my_file.unlink()'''
+# vytvorit  file a v nem 2 text soubory  zapsat do nej text ,
+# precteme  a pak vymazeme oba text soubory a taky file
+'''from pathlib import Path
+
+file_dir = Path('files')# stvorime cestu i sam file
+file_dir.mkdir(exist_ok=True)# pokud existuje to ne stvorime opet
+
+f_file = file_dir / 'first.txt' # stv promenu i cestu
+s_file = file_dir / 'second.txt'# stv promenu i cestu
+
+
+with open(f_file, 'w') as first_file: # otvirame a zapiseme text
+    first_file.write("First string\n")
+    first_file.write("First string\n")
+
+with open(f_file) as first_file: # otvirame a cteme
+    print(first_file.readline())
+    print(first_file.readline())
+
+
+with open(s_file, 'w') as second_file: # otvirame a zapiseme text
+    second_file.write("Second string\n")
+    second_file.write("Second string\n")
+
+with open(s_file) as second_file:# otvirame a cteme
+    print(second_file.readline())
+    print(second_file.readline())
+
+
+f_file.unlink() # mazeme text soubor
+
+s_file.unlink() # mazeme text soubor
+
+
+file_dir.rmdir() # mazeme file'''
+
+# CSV
+# my_csv.py
+'''
+import csv
+with open('new.txt', 'w') as new_file: 
+    new_file.write("First string\n") 
+    new_file.write("Second string\n")
+
+with open('c:/Users/kolja/Desktop/Python/GROUP04/PY/16/username.csv') as file:
+    reader = csv.reader(file, delimiter=';')
+    for row in reader:
+        print(row)
+
+print('-------------------------------------------------')
+
+with open('c:/Users/kolja/Desktop/Python/GROUP04/PY/16/username.csv') as file:
+    reader = csv.DictReader(file, delimiter=';')
+    for row in reader:
+        print(row)'''
+# time
+'''import time
+
+start_time = time.time()
+
+my_range = list(range(100000000))
+print(my_range[1000])
+
+
+end_time = time.time()
+
+print(end_time - start_time)
+'''
+#random
+
+'''import random
+
+print(random.random())#V
+print(random.randint(1, 10))#2
+print(random.choice('abcdef'))#e
+print(random.choice([1, 10, 5]))#5
+print(random.choices([1, 10, 15, 4, 20, 50], k=2))# [50, 10]
+my_list = [1, 10, 15, 4, 20, 50]
+random.shuffle(my_list)
+print(my_list)# [50, 10, 20, 1, 15, 4]
+
+
+print(''.join(random.choices('ABCDEF0123456789', k=8))) #3CF77331'''
+
+#secret, string generace hesla
+'''import secrets
+import string
+
+all_chars = string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
+print(''.join(secrets.choice(all_chars) for i in range(10)))
+# print(string.ascii_letters)
+# print(string.ascii_lowercase)
+# print(string.ascii_uppercase)
+# print(string.digits)
+#print(string.punctuation)'''
+# math
