@@ -448,10 +448,61 @@ print(''.join(random.choices('ABCDEF0123456789', k=8))) #3CF77331'''
 import string
 
 all_chars = string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
-print(''.join(secrets.choice(all_chars) for i in range(10)))
-# print(string.ascii_letters)
-# print(string.ascii_lowercase)
-# print(string.ascii_uppercase)
-# print(string.digits)
-#print(string.punctuation)'''
+print(''.join(secrets.choice(all_chars) for i in range(10)))#lQzhH+tDj2
+print(string.ascii_letters)#abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+print(string.ascii_lowercase)#abcdefghijklmnopqrstuvwxyz
+print(string.ascii_uppercase)#ABCDEFGHIJKLMNOPQRSTUVWXYZ
+print(string.digits)#0123456789
+print(string.punctuation)#!"#$%&'()*+,-./:;<=>?@[]^_`{|}~'''
+
 # math
+'''
+import math
+print(math.pi)# 3.141592653589793 
+print(math.e)# 2.718281828459045
+print(math.sqrt(25))# 5.0 5x5=25
+print(math.log(100))# 4.605170185988092
+print(math.factorial(10))# 3628800 10*9*8*7*6*5*4*3*2*1'''
+
+# funkce rekurse musi byt ukoncena
+'''import math
+def calc_factorial(num):
+    if type(num) is not int:
+        raise TypeError("Number must be ineger")
+    if num <= 0:
+        raise ValueError("Number must be positive") 
+    if num == 1:
+        return 1
+    return calc_factorial(num - 1) * num
+
+print(calc_factorial(10))
+print(math.factorial(10))'''
+# regularni vyrazy hledani  porovnani kontrola
+import re
+my_string = "Jour name is Mykola."
+
+res = re.search('M....a', my_string)# . znamena jak koli symvol
+res1 = re.search('^J.*n', my_string)#  ^ ukaze na zacatek hledani
+res2 = re.search('M....a.$', my_string)# $ ukaze na konec hledani
+res3 = re.search('M.*a', my_string)# .* cokoliv
+res4 = re.search(r'M....a\.$', my_string)# r ne da sped znakam  mod kod
+
+
+print(res) #<re.Match object; span=(11, 17), match='Mykola'>
+           # najde index zacatku a konce stringu
+
+print(res1)
+print(res2)
+print(res3)
+print(res4)
+print(res.span())
+print(res.start())
+print(res.end())
+
+
+print(type(res))
+
+
+
+
+
