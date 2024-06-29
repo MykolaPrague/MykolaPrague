@@ -478,14 +478,14 @@ def calc_factorial(num):
 print(calc_factorial(10))
 print(math.factorial(10))'''
 # regularni vyrazy hledani  porovnani kontrola
-import re
+'''import re
 my_string = "Jour name is Mykola."
 
 res = re.search('M....a', my_string)# . znamena jak koli symvol
 res1 = re.search('^J.*n', my_string)#  ^ ukaze na zacatek hledani
 res2 = re.search('M....a.$', my_string)# $ ukaze na konec hledani
 res3 = re.search('M.*a', my_string)# .* cokoliv
-res4 = re.search(r'M....a\.$', my_string)# r ne da sped znakam  mod kod
+res4 = re.search(r'M....a.$', my_string)# r ne da sped znakam  mod kod
 
 
 print(res) #<re.Match object; span=(11, 17), match='Mykola'>
@@ -500,9 +500,83 @@ print(res.start())
 print(res.end())
 
 
-print(type(res))
+print(type(res))'''
+import re
+# kontrola emaila
+
+def check_email(email):
+    email_regexp = r"^[a-zA-z0-9_.]+@[a-zA-z0-9]+\.[a-zA-z0-9-.]+$"
+    email_sheck_pattern = re.compile(email_regexp)
+    validation_result = "valid" if email_sheck_pattern.fullmatch(email) else "not valid"
+    return (email, validation_result)
+
+print(check_email('bs@gmail.com'))
+print(check_email('b.s@sub.gmail.com'))
+print(check_email('b.s@gmail.com'))
+print(check_email('b_s@gmail.com'))
+print(check_email('bsgmail.com'))
+print(check_email('bs@gmailcom'))
+print(check_email('@gmail.com'))
+print(check_email('bs@'))
 
 
+def check_password(password):
+    length_patern = re.compile(r"\S{8,}")
+    lowercase_patern = re.compile(r"[a-z]+")
+    password_regexp =r"^[aaaaaa]$"
+    password_regexp =r"^[aaaaaa]$"
+
+
+# SQL
+''' 
+import sqlite3
+
+DB_NAME = "sqlite_db.db"
+
+
+
+# CREATE NEW TABLE
+
+with sqlite3.connect(DB_NAME) as sqlite_conn:
+    print(sqlite_conn)
+    print(sqlite3.version)
+
+with sqlite3.connect(DB_NAME) as sqlite_conn:
+    sql_request = """CREATE TABLE IF NOT EXISTS courses (
+    id iteger PRIMARY KEY,
+    title text NOT NULL,
+    snudent_gty integer,
+    reviews_qty integer
+    );"""
+    sqlite_conn.execute(sql_request)
+
+
+
+
+#add records to the courses table
+courses = [
+    (351, "JavaScript course", 415, 100),
+    (614, "C++ course", 161, 10),
+    (721, "Java full course", 100, 35)
+]
+with sqlite3.connect(DB_NAME) as sqlite_conn:
+    sql_request = "INSERT INTO courses VALUES(?, ?, ?, ?)"
+    for course in courses:
+        sqlite_conn.execute(sql_request, course)
+    sqlite_conn.commit()
+
+
+with sqlite3.connect(DB_NAME) as sqlite_conn:
+    sql_request = "SELECT * FROM courses"
+    sql_cursor = sqlite_conn.execute(sql_request)
+    # for record in sql_cursor:
+    #     print(record[1])
+    records = sql_cursor.fetchall()
+    print(records)  #[(251, 'Python course', 100, 30),
+                    #  (351, 'JavaScript course', 415, 100),
+                      #  (614, 'C++ course', 161, 10),
+                       #   (721, 'Java full course', 100, 35)]
+'''
 
 
 
