@@ -519,12 +519,22 @@ print(check_email('bs@gmailcom'))
 print(check_email('@gmail.com'))
 print(check_email('bs@'))
 
+# kontrola hesla
+test_password = 'ASDfas!2342'
 
 def check_password(password):
     length_patern = re.compile(r"\S{8,}")
-    lowercase_patern = re.compile(r"[a-z]+")
-    password_regexp =r"^[aaaaaa]$"
-    password_regexp =r"^[aaaaaa]$"
+    lowercase_patern = re.compile(r"[a-z]+") #aspon 1 symvol 
+    upercase_patern = re.compile(r"[A-Z]+")
+    number_patern = re.compile(r"[0-9]")
+    especial_symbol_patern = re.compile(r"[@%#!*^&]")
+
+    if not re.fullmatch(length_patern, password):
+        return (False, "Password must have at least 8 symbols")
+    
+print(check_password(test_password))
+
+
 
 
 # SQL
